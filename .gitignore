@@ -1,0 +1,29 @@
+# Environment and secrets
+.env
+.env.*
+!.env.example
+**/.env
+**/.env.*
+!**/.env.example
+
+# Build and dependency outputs
+**/target/
+**/build/
+**/out/
+**/node_modules/
+**/.m2/
+
+# IDE and OS
+.idea/
+*.iml
+.vscode/
+.DS_Store
+Thumbs.db
+
+# Logs and temp files
+*.log
+tmp.*
+*.tmp
+
+# Runtime artifacts
+backend/logs/

@@ -1,0 +1,33 @@
+server:
+  port: ${USER_SERVICE_PORT:8081}
+
+spring:
+  datasource:
+    url: ${USER_DB_URL:jdbc:mysql://localhost:3306/user_db}
+    username: ${USER_DB_USERNAME:root}
+    password: ${USER_DB_PASSWORD:change_me}
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+  
+  jwt:
+    secret: ${JWT_SECRET:change-me-change-me-change-me-1234}
+
+  kafka:
+    bootstrap-servers: ${KAFKA_BOOTSTRAP_SERVERS:host.docker.internal:9092}
+
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+      properties:
+        spring.json.add.type.headers: true
+
+    consumer:
+      group-id: user-service-group
+      auto-offset-reset: earliest
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+      properties:
+        spring.json.trusted.packages: "*"
