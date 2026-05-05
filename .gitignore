@@ -1,10 +1,6 @@
 # Environment and secrets
 .env
-.env.*
-!.env.example
 **/.env
-**/.env.*
-!**/.env.example
 
 # Build and dependency outputs
 **/target/
